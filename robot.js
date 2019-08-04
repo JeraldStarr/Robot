@@ -84,3 +84,16 @@ pointActiveSquare = () => {
 }
 
 window.addEventListener("load", init);
+const upButton = document.getElementById("up");
+document.getElementById("up").addEventListener("click", () => {
+  move(0,-1);
+});
+document.getElementById("down").addEventListener("click", () => {
+  move(-1,0);
+});
+document.getElementById("right").addEventListener("click", () => {
+  move(1,0);
+});
+document.getElementById("left").addEventListener("click", () => {
+  move(0,1)
+})

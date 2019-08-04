@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gra robot</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="robot.js"></script>
 </head>
   
 <body>
@@ -15,16 +14,17 @@
   <div class="empty"></div>
   <div class="UIPanel">
     <div class="empty"></div>
-    <div class="button" onclick="move(0,-1)">&uarr;</div>
+    <div id="up" class="button">&uarr;</div>
     <div class="empty"></div>
-	<div class="break button" onclick="move(-1,0)">&larr;</div>
+	<div id="down" class="break button">&larr;</div>
     <div class="empty"></div>
-    <div class=" button" onclick="move(1,0)">&rarr;</div>
+    <div id="right" class=" button">&rarr;</div>
     <div class="break empty"></div>
-    <div class="button" onclick="move(0,1)">&darr;</div>
+    <div id="left" class="button">&darr;</div>
     <div class="empty"></div>
 	<div class="break"><br>Pozostało: <span id="ile"></span>
 	<div id="finish">&nbsp;</div>
   </div>
+  <script src="robot.js"></script>
 </body>
 </html>
