@@ -60,7 +60,7 @@ move = (x, y) => {
       activeSquare.style.visibility = "hidden";
       fieldsLeft -= 1;
       if (fieldsLeft === 0) {
-        document.getElementById("finish").textContent = "Gratulacje! Wygrałeś!";
+        document.getElementById("result").textContent = "Gratulacje! Wygrałeś!";
       }
     } else {
       activeSquare.style.visibility = "visible";
