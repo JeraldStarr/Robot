@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Robot</title>
+  <link 
+  href="https://fonts.googleapis.com/css?family=Lobster&display=swap&subset=cyrillic-ext" 
+  rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+  
+<body>
+  <h1>Robot</h1>
+  <div id="description">
+      <p>Steruj robotem za pomocą przycisków ze strzałkami tak, aby zlikwidować 
+          wszystkie ciemne pola. Gdy robot stanie na polu, odcień pola 
+          zmienia się z jasnego na ciemny lub odwrotnie.</p>
+  </div>
+
+  <div id="gameBoard"></div>
+  <div id="UIwrapper">
+  <div class="UIPanel">
+    <div class="empty"></div>
+    <div id="up" class="button">&uarr;</div>
+    <div class="empty"></div>
+	  <div id="down" class="break button">&larr;</div>
+    <div class="empty"></div>
+    <div id="right" class=" button">&rarr;</div>
+    <div class="break empty"></div>
+    <div id="left" class="button">&darr;</div>
+   </div>
+   <div class="empty"></div>
+      <div id="result"><span>Pozostało: </span><span id="ile"></span>
+      <div id="finish">&nbsp;</div>
+   </div>
+  </div>
+  <script src="robot.js"></script>
+</body>
+</html>
