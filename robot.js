@@ -80,6 +80,4 @@ function pointActiveSquare() {
   return kwadrat;
 }
 
-window.onload = function () {
-  init();
-}
+window.addEventListener("load", init);
