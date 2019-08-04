@@ -38,7 +38,7 @@ init = () => {
 }
 
 move = (x, y) => {
-  var robot = document.getElementById("robot");
+  const robot = document.getElementById("robot");
 
   if (x === 1) positionX += 60;
   if (x === -1) positionX -= 60;
@@ -55,7 +55,7 @@ move = (x, y) => {
     positionY = 0;
   } else {
     // zmiana widoczności
-    var activeSquare = pointActiveSquare();
+    const activeSquare = pointActiveSquare();
     if (activeSquare.style.visibility === "visible") {
       activeSquare.style.visibility = "hidden";
       fieldsLeft -= 1;
@@ -68,18 +68,18 @@ move = (x, y) => {
     }
   }
 
-  robot.style.left = positionX + "px";
-  robot.style.top = positionY + "px";
+  robot.style.left = `${positionX}px`;
+  robot.style.top = `${positionY}px`;
 
   //ustawienie komunikatu o ciemnozielonych polach
-  var ile = document.getElementById("ile");
-  ile.innerHTML = fieldsLeft;
+  let fieldsLeftHTMLDisplayer = document.getElementById("ile");
+  fieldsLeftHTMLDisplayer.innerHTML = fieldsLeft;
 }
 
 
 pointActiveSquare = () => {
-  var nr = positionY / 10 + positionX / 60;
-  var square = document.getElementById("sqrt" + nr);
+  let nr = positionY / 10 + positionX / 60;
+  const square = document.getElementById("sqrt" + nr);
   return square;
 }
 
