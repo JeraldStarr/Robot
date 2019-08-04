@@ -11,17 +11,17 @@
 <body>
   <h1>Gra robot</h1>
   <p>Steruj robotem za pomocą przycisków ze strzałkami tak, aby zlikwidować wszystkie ciemnozielone pola. Gdy robot stanie na polu, kolor pola zmienia się z jasnozileonego na ciemnozielony lub odwrotnie.</p>
-  <div id="plansza"></div>
+  <div id="gameBoard"></div>
   <div class="przycisk_pusty"></div>
   <div class="obok">
     <div class="przycisk_pusty"></div>
-    <div class="przycisk" onclick="ruch(0,-1)">&uarr;</div>
+    <div class="przycisk" onclick="move(0,-1)">&uarr;</div>
     <div class="przycisk_pusty"></div>
-	<div class="zlam przycisk" onclick="ruch(-1,0)">&larr;</div>
+	<div class="zlam przycisk" onclick="move(-1,0)">&larr;</div>
     <div class="przycisk_pusty"></div>
-    <div class=" przycisk" onclick="ruch(1,0)">&rarr;</div>
+    <div class=" przycisk" onclick="move(1,0)">&rarr;</div>
     <div class="zlam przycisk_pusty"></div>
-    <div class="przycisk" onclick="ruch(0,1)">&darr;</div>
+    <div class="przycisk" onclick="move(0,1)">&darr;</div>
     <div class="przycisk_pusty"></div>
 	<div class="zlam"><br>Pozostało: <span id="ile"></span>
 	<div id="koniec">&nbsp;</div>

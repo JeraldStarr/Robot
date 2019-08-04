@@ -1,88 +1,85 @@
 //pozycja robota
-var poz_x = 0;
-var poz_y = 0;
+var positionX = 0;
+var positionY = 0;
 //ile pól pozostało do zlikwidowania
-var ile_jeszcze = 0;
-var historia = [];
-var poprzednia_x = 0;
-var poprzednia_y = 0;
+var fieldsLeft = 0;
 
-function ini() {
-  var plansza = document.getElementById("plansza");
-  plansza.innerHTML = "";
+function init() {
+  var board = document.getElementById("gameBoard");
+  board.innerHTML = "";
   //wstawianie 36 "divów"
   for (var i = 0; i < 36; i++) {
     var id = "k" + i;
-    plansza.innerHTML += "<div class='kwadrat' id='k" + i + "'> </div>";
-    var kw = document.getElementById(id);
-    kw.style.left = (i % 6) * 60 + "px";
-    kw.style.top = Math.floor(i / 6) * 60 + "px";
+    board.innerHTML += "<div class='kwadrat' id='k" + i + "'> </div>";
+    var field = document.getElementById(id);
+    field.style.left = (i % 6) * 60 + "px";
+    field.style.top = Math.floor(i / 6) * 60 + "px";
     //losowanie koloru i zliczanie ciemnozielonych pól
     if (Math.random() < 0.5)
-      kw.style.visibility = "hidden";
+    field.style.visibility = "hidden";
     else {
-      kw.style.visibility = "visible";
-      ile_jeszcze += 1;
+      field .style.visibility = "visible";
+      fieldsLeft += 1;
     }
   }
   //dodanie robota
-  plansza.innerHTML += "<div id='robot'><img src='robot.png'></div>";
+  board.innerHTML += "<div id='robot'><img src='robot.png'></div>";
   var robot = document.getElementById("robot");
-  poz_x = 0;
-  poz_y = 0;
-  robot.style.top = poz_x + "px";
-  robot.style.left = poz_y + "px";
+  positionX = 0;
+  positionY = 0;
+  robot.style.top = positionX + "px";
+  robot.style.left = positionY + "px";
   //ustawienie komunikatu o ciemnozielonych polach
-  var ile = document.getElementById("ile");
-  ile.innerHTML = ile_jeszcze;
+  var fieldsLeftHTMLDisplayer = document.getElementById("ile");
+  fieldsLeftHTMLDisplayer.innerHTML = fieldsLeft;
 }
 
-function ruch(x, y) {
+function move(x, y) {
   var robot = document.getElementById("robot");
 
-  if (x == 1) poz_x += 60;
-  if (x == -1) poz_x -= 60;
-  if (y == 1) poz_y += 60;
-  if (y == -1) poz_y -= 60;
+  if (x == 1) positionX += 60;
+  if (x == -1) positionX -= 60;
+  if (y == 1) positionY += 60;
+  if (y == -1) positionY -= 60;
 
-  if (poz_x > 300) {
-    poz_x = 300;
-  } else if (poz_x < 0) {
-    poz_x = 0
-  } else if (poz_y > 300) {
-    poz_y = 300;
-  } else if (poz_y < 0) {
-    poz_y = 0;
+  if (positionX > 300) {
+    positionX = 300;
+  } else if (positionX < 0) {
+    positionX = 0
+  } else if (positionY > 300) {
+    positionY = 300;
+  } else if (positionY < 0) {
+    positionY = 0;
   } else {
     // zmiana widoczności
-    var k = wskazAktywnyKwadrat();
-    if (k.style.visibility == "visible") {
-      k.style.visibility = "hidden";
-      ile_jeszcze -= 1;
-      if (ile_jeszcze == 0) {
+    var activeSquare = pointActiveSquare();
+    if (activeSquare.style.visibility === "visible") {
+      activeSquare.style.visibility = "hidden";
+      fieldsLeft -= 1;
+      if (fieldsLeft === 0) {
         document.getElementById("koniec").textContent = "Gratulacje! Wygrałeś!";
       }
     } else {
-      k.style.visibility = "visible";
-      ile_jeszcze += 1;
+      activeSquare.style.visibility = "visible";
+      fieldsLeft += 1;
     }
   }
 
-  robot.style.left = poz_x + "px";
-  robot.style.top = poz_y + "px";
+  robot.style.left = positionX + "px";
+  robot.style.top = positionY + "px";
 
   //ustawienie komunikatu o ciemnozielonych polach
   var ile = document.getElementById("ile");
-  ile.innerHTML = ile_jeszcze;
+  ile.innerHTML = fieldsLeft;
 }
 
 
-function wskazAktywnyKwadrat() {
-  var nr = poz_y / 10 + poz_x / 60;
+function pointActiveSquare() {
+  var nr = positionY / 10 + positionX / 60;
   var kwadrat = document.getElementById("k" + nr);
   return kwadrat;
 }
 
 window.onload = function () {
-  ini();
+  init();
 }
