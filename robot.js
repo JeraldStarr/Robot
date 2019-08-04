@@ -1,19 +1,22 @@
 //pozycja robota
-var positionX = 0;
-var positionY = 0;
+let positionX = 0;
+let positionY = 0;
 //ile pól pozostało do zlikwidowania
-var fieldsLeft = 0;
+let fieldsLeft = 0;
 
-function init() {
-  var board = document.getElementById("gameBoard");
+init = () => {
+  const board = document.getElementById("gameBoard");
+  const howMuchFields = 36;
+  const fieldSize = 60;
+  const boardSize = 6;
   board.innerHTML = "";
   //wstawianie 36 "divów"
-  for (var i = 0; i < 36; i++) {
-    var id = "k" + i;
-    board.innerHTML += "<div class='kwadrat' id='k" + i + "'> </div>";
-    var field = document.getElementById(id);
-    field.style.left = (i % 6) * 60 + "px";
-    field.style.top = Math.floor(i / 6) * 60 + "px";
+  for (let i = 0; i < howMuchFields; i++) {
+    let id = "sqrt" + i;
+    board.innerHTML += "<div class='square' id='sqrt" + i + "'> </div>";
+    const field = document.getElementById(id);
+    field.style.left = (i % boardSize) * fieldSize + "px";
+    field.style.top = Math.floor(i / boardSize) * fieldSize + "px";
     //losowanie koloru i zliczanie ciemnozielonych pól
     if (Math.random() < 0.5)
     field.style.visibility = "hidden";
@@ -24,23 +27,23 @@ function init() {
   }
   //dodanie robota
   board.innerHTML += "<div id='robot'><img src='robot.png'></div>";
-  var robot = document.getElementById("robot");
+  const robot = document.getElementById("robot");
   positionX = 0;
   positionY = 0;
   robot.style.top = positionX + "px";
   robot.style.left = positionY + "px";
   //ustawienie komunikatu o ciemnozielonych polach
-  var fieldsLeftHTMLDisplayer = document.getElementById("ile");
+  const fieldsLeftHTMLDisplayer = document.getElementById("ile");
   fieldsLeftHTMLDisplayer.innerHTML = fieldsLeft;
 }
 
-function move(x, y) {
+move = (x, y) => {
   var robot = document.getElementById("robot");
 
-  if (x == 1) positionX += 60;
-  if (x == -1) positionX -= 60;
-  if (y == 1) positionY += 60;
-  if (y == -1) positionY -= 60;
+  if (x === 1) positionX += 60;
+  if (x === -1) positionX -= 60;
+  if (y === 1) positionY += 60;
+  if (y === -1) positionY -= 60;
 
   if (positionX > 300) {
     positionX = 300;
@@ -57,7 +60,7 @@ function move(x, y) {
       activeSquare.style.visibility = "hidden";
       fieldsLeft -= 1;
       if (fieldsLeft === 0) {
-        document.getElementById("koniec").textContent = "Gratulacje! Wygrałeś!";
+        document.getElementById("finish").textContent = "Gratulacje! Wygrałeś!";
       }
     } else {
       activeSquare.style.visibility = "visible";
@@ -74,10 +77,10 @@ function move(x, y) {
 }
 
 
-function pointActiveSquare() {
+pointActiveSquare = () => {
   var nr = positionY / 10 + positionX / 60;
-  var kwadrat = document.getElementById("k" + nr);
-  return kwadrat;
+  var square = document.getElementById("sqrt" + nr);
+  return square;
 }
 
 window.addEventListener("load", init);

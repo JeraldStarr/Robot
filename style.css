@@ -6,7 +6,7 @@
   float: left;  
 }  
 
-.kwadrat {  
+.square {  
   width: 60px;  
   height: 60px;  
   background: #006600;  
@@ -21,7 +21,7 @@
   margin:0 auto; 
 } 
 
-.przycisk {  
+.button {  
   width: 40px;  
   height: 40px;  
   background: #dddddd;  
@@ -31,7 +31,7 @@
   text-align:center;
 }
  
-.przycisk_pusty {  
+.empty {  
   width: 40px;  
   height: 40px;  
   background: #ffffff;  
@@ -40,15 +40,15 @@
   font-size:32px;
 } 
 
-.obok{
+.UIPanel{
   float: left;
 }
 
-.zlam{
+.break{
   clear: both;
 }
 
-#koniec{
+#finish{
   font-size:32px;
   color:#ff0000;
 }
