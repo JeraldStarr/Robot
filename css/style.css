@@ -109,5 +109,8 @@ body {
 .UIwrapper__break {
   clear: both;
 }
+.UIwrapper__moves, .UIwrapper__leftSquares {
+  color: #ff0000;
+}
 
 /*# sourceMappingURL=style.css.map */
