@@ -21,8 +21,7 @@ function init () {
     if (Math.random() < 0.5)
     field.style.visibility = "hidden";
     else {
-      field.style.visibility = "visible";
-      fieldsLeft += 1;
+      changeForVisible(field);
     }
   }
   //dodanie robota
@@ -42,7 +41,8 @@ function init () {
 function move(x, y) {
   const robot = document.querySelector(".gameBoard__robot");
   changeRobotPosition(x, y);
-  limitMovment();
+  checkIfSquareCanBeChanged();
+  setNewPositionForRobot();
 
   robot.style.left = `${positionX}px`;
   robot.style.top = `${positionY}px`;
@@ -83,7 +83,7 @@ function changeRobotPosition(x, y) {
   if (y === -1) positionY -= 60;
 }
 
-function limitMovment() {
+function checkIfSquareCanBeChanged() {
   if (positionX > 300) {
     positionX = 300;
   } else if (positionX < 0) {
@@ -93,19 +93,35 @@ function limitMovment() {
   } else if (positionY < 0) {
     positionY = 0;
   } else {
-    // zmiana widoczności
-    const activeSquare = pointActiveSquare();
-    if (activeSquare.style.visibility === "visible") {
-      activeSquare.style.visibility = "hidden";
-      fieldsLeft -= 1;
-      if (fieldsLeft === 0) {
-        document.querySelector(".UIwrapper__result").textContent = "Gratulacje! Wygrałeś!";
-      }
-    } else {
-      activeSquare.style.visibility = "visible";
-      fieldsLeft += 1;
-    }
+    changeSquare();
   }
+}
+function setNewPositionForRobot() {
+  const robot = document.querySelector(".gameBoard__robot");
+  robot.style.left = `${positionX}px`;
+  robot.style.top = `${positionY}px`;
+}
+
+function changeSquare() {
+  const activeSquare = pointActiveSquare();
+  if (activeSquare.style.visibility === "visible") {
+    changeForUnvisible(activeSquare);
+    if (fieldsLeft === 0) {
+      document.querySelector(".UIwrapper__result").textContent = "Gratulacje! Wygrałeś!";
+    }
+  } else {
+    changeForVisible(activeSquare);
+  }
+}
+
+function changeForVisible (square) {
+  square.style.visibility = "visible";
+  fieldsLeft += 1;
+}
+
+function changeForUnvisible (square) {
+  square.style.visibility = "hidden";
+  fieldsLeft -= 1;
 }
 
 
