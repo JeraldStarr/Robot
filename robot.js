@@ -1,11 +1,13 @@
 let positionX = 0;
 let positionY = 0;
 let fieldsLeft = 0;
+let moves = 0;
+
 
 function init () {
   const board = document.querySelector(".gameBoard");
   const fieldsOnBoard = 36;
-  //wstawianie 36 "divów"
+
   for (let i = 0; i < fieldsOnBoard; i++) {
     createSquare(board, i);
     setSquare(i);
@@ -24,15 +26,23 @@ function pointActiveSquare() {
 function setListenerToBtnClick() {
   document.querySelector("[data-direction=up]").addEventListener("click", () => {
     moveRobot(0,-1);
+    moves++;
+    displayMoves();
   });
   document.querySelector("[data-direction=down]").addEventListener("click", () => {
     moveRobot(-1,0);
+    moves++;
+    displayMoves();
   });
   document.querySelector("[data-direction=right]").addEventListener("click", () => {
     moveRobot(1,0);
+    moves++;
+    displayMoves();
   });
   document.querySelector("[data-direction=left]").addEventListener("click", () => {
     moveRobot(0,1)
+    moves++;
+    displayMoves();
   })
 }
 
@@ -134,6 +144,10 @@ function moveRobot(x, y) {
   checkIfSquareCanBeChanged();
   setNewPositionForRobot();
   setInformationAboutLeftDarkFields();
+}
+
+function displayMoves() {
+  document.querySelector(".UIwrapper__moves").textContent = moves;
 }
 
 init();
