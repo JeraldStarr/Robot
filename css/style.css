@@ -1,109 +1,100 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
   width: 100vw;
   height: 100vh;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  font-family: 'Lobster', cursive;
+  justify-content: space-around;
+  font-family: "Lobster", cursive;
   background-color: #e6e7e8;
 }
 
-body h1 {
+.title {
   font-size: 110px;
   text-align: center;
-  -ms-flex-preferred-size: 100vw;
-      flex-basis: 100vw;
+  flex-basis: 100vw;
   height: 15vh;
+  margin-top: 10vh;
   letter-spacing: 5px;
 }
 
-body #description {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.description {
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-preferred-size: 100vw;
-      flex-basis: 100vw;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 100vw;
+  margin-bottom: 5vh;
 }
-
-body #description p {
+.description__text {
   text-align: center;
   width: 50vw;
 }
 
-body #gameBoard {
+.gameBoard {
   width: 360px;
   height: 360px;
   background: #afb0b3;
   position: relative;
   float: left;
 }
-
-body #gameBoard .square {
+.gameBoard__square {
   width: 60px;
   height: 60px;
   background: #616263;
   position: absolute;
+  transition: 0.3s;
 }
-
-body #gameBoard #robot {
+.gameBoard__robot {
   width: 60px;
   height: 60px;
   position: absolute;
+  text-align: center;
   margin: 0 auto;
+  transition: 0.3s;
 }
 
-body #UIwrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.UIwrapper {
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-preferred-size: 40vw;
-      flex-basis: 40vw;
+  justify-content: space-around;
+  align-items: center;
+  flex-basis: 40vw;
   height: 40vh;
 }
+.UIwrapper__result {
+  display: flex;
+  justify-content: center;
+  flex-basis: 20vw;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
 
-body #UIwrapper .button {
+.UIwrapper__button {
   width: 40px;
   height: 40px;
-  background: #ff0000;
+  background-color: #ff0000;
+  color: #fff;
+  border: 1px solid #ff0000;
+  border-radius: 3px;
   float: left;
   margin: 1px;
   font-size: 32px;
   text-align: center;
+  transition: 0.3s;
+  line-height: 29px;
 }
-
-body #UIwrapper .button:hover {
+.UIwrapper__button:hover {
   cursor: pointer;
-  -webkit-filter: brightness(90%);
-          filter: brightness(90%);
+  filter: brightness(90%);
+  color: #ff0000;
+  background-color: #fff;
 }
-
-body #UIwrapper .empty {
+.UIwrapper__empty {
   width: 40px;
   height: 40px;
   background: #e6e7e8;
