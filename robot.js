@@ -21,16 +21,11 @@ function init () {
     if (Math.random() < 0.5)
     field.style.visibility = "hidden";
     else {
-      changeForVisible(field);
+      changeSquareForVisible(field);
     }
   }
-  //dodanie robota
   createRobot(board);
-
-  //ustawienie komunikatu o ciemnozielonych polach
-  const fieldsLeftHTMLDisplayer = document.getElementById("ile");
-  fieldsLeftHTMLDisplayer.textContent = fieldsLeft;
-
+  setInformationAboutLeftDarkFields();
   setListenerToBtnClick()
 }
 
@@ -44,8 +39,9 @@ function move(x, y) {
   robot.style.top = `${positionY}px`;
 
   //ustawienie komunikatu o ciemnozielonych polach
-  let fieldsLeftHTMLDisplayer = document.getElementById("ile");
-  fieldsLeftHTMLDisplayer.textContent = fieldsLeft;
+  // let fieldsLeftHTMLDisplayer = document.getElementById("ile");
+  // fieldsLeftHTMLDisplayer.textContent = fieldsLeft;
+  setInformationAboutLeftDarkFields();
 }
 
 
@@ -101,21 +97,21 @@ function setNewPositionForRobot() {
 function changeSquare() {
   const activeSquare = pointActiveSquare();
   if (activeSquare.style.visibility === "visible") {
-    changeForUnvisible(activeSquare);
+    changeSquareForUnvisible(activeSquare);
     if (fieldsLeft === 0) {
       showVictoryMessage();
     }
   } else {
-    changeForVisible(activeSquare);
+    changeSquareForVisible(activeSquare);
   }
 }
 
-function changeForVisible (square) {
+function changeSquareForVisible (square) {
   square.style.visibility = "visible";
   fieldsLeft += 1;
 }
 
-function changeForUnvisible (square) {
+function changeSquareForUnvisible (square) {
   square.style.visibility = "hidden";
   fieldsLeft -= 1;
 }
@@ -133,5 +129,9 @@ function createRobot(board) {
   robot.style.left = positionY + "px";
 }
 
+function setInformationAboutLeftDarkFields() {
+  let fieldsLeftHTMLDisplayer = document.getElementById("ile");
+  fieldsLeftHTMLDisplayer.textContent = fieldsLeft;
+}
 
 init();
