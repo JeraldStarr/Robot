@@ -102,21 +102,8 @@ body {
   margin: 1px;
   font-size: 32px;
 }
-
-body #UIwrapper .break {
+.UIwrapper__break {
   clear: both;
 }
 
-body #UIwrapper #result {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-preferred-size: 20vw;
-      flex-basis: 20vw;
-  font-size: 30px;
-  letter-spacing: 2px;
-}
 /*# sourceMappingURL=style.css.map */

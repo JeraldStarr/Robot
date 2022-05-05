@@ -1,0 +1,22 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "robot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Swerad@bitbucket.org/Swerad/robot.git"
+  },
+  "author": "Lukasz Sitnik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/Swerad/robot/issues"
+  },
+  "homepage": "https://bitbucket.org/Swerad/robot#readme",
+  "dependencies": {
+    "sass": "^1.51.0"
+  }
+}
