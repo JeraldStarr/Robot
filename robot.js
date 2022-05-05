@@ -25,12 +25,8 @@ function init () {
     }
   }
   //dodanie robota
-  board.innerHTML += "<div class='gameBoard__robot'><img src='robot.png'></div>";
-  const robot = document.querySelector(".gameBoard__robot");
-  positionX = 0;
-  positionY = 0;
-  robot.style.top = positionX + "px";
-  robot.style.left = positionY + "px";
+  createRobot(board);
+
   //ustawienie komunikatu o ciemnozielonych polach
   const fieldsLeftHTMLDisplayer = document.getElementById("ile");
   fieldsLeftHTMLDisplayer.textContent = fieldsLeft;
@@ -107,7 +103,7 @@ function changeSquare() {
   if (activeSquare.style.visibility === "visible") {
     changeForUnvisible(activeSquare);
     if (fieldsLeft === 0) {
-      document.querySelector(".UIwrapper__result").textContent = "Gratulacje! Wygrałeś!";
+      showVictoryMessage();
     }
   } else {
     changeForVisible(activeSquare);
@@ -122,6 +118,19 @@ function changeForVisible (square) {
 function changeForUnvisible (square) {
   square.style.visibility = "hidden";
   fieldsLeft -= 1;
+}
+
+function showVictoryMessage() {
+  document.querySelector(".UIwrapper__result").textContent = "Gratulacje! Wygrałeś!";
+}
+
+function createRobot(board) {
+  board.innerHTML += "<div class='gameBoard__robot'><img src='robot.png'></div>";
+  const robot = document.querySelector(".gameBoard__robot");
+  positionX = 0;
+  positionY = 0;
+  robot.style.top = positionX + "px";
+  robot.style.left = positionY + "px";
 }
 
 
