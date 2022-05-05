@@ -23,18 +23,10 @@ function init () {
   setListenerToBtnClick()
 }
 
-function move(x, y) {
-  const robot = document.querySelector(".gameBoard__robot");
+function moveRobot(x, y) {
   changeRobotPosition(x, y);
   checkIfSquareCanBeChanged();
   setNewPositionForRobot();
-
-  robot.style.left = `${positionX}px`;
-  robot.style.top = `${positionY}px`;
-
-  //ustawienie komunikatu o ciemnozielonych polach
-  // let fieldsLeftHTMLDisplayer = document.getElementById("ile");
-  // fieldsLeftHTMLDisplayer.textContent = fieldsLeft;
   setInformationAboutLeftDarkFields();
 }
 
@@ -46,18 +38,17 @@ function pointActiveSquare() {
 }
 
 function setListenerToBtnClick() {
-
   document.getElementById("up").addEventListener("click", () => {
-    move(0,-1);
+    moveRobot(0,-1);
   });
   document.getElementById("down").addEventListener("click", () => {
-    move(-1,0);
+    moveRobot(-1,0);
   });
   document.getElementById("right").addEventListener("click", () => {
-    move(1,0);
+    moveRobot(1,0);
   });
   document.getElementById("left").addEventListener("click", () => {
-    move(0,1)
+    moveRobot(0,1)
   })
 }
 
