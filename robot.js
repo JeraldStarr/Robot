@@ -22,16 +22,16 @@ function pointActiveSquare() {
 }
 
 function setListenerToBtnClick() {
-  document.getElementById("up").addEventListener("click", () => {
+  document.querySelector("[data-direction=up]").addEventListener("click", () => {
     moveRobot(0,-1);
   });
-  document.getElementById("down").addEventListener("click", () => {
+  document.querySelector("[data-direction=down]").addEventListener("click", () => {
     moveRobot(-1,0);
   });
-  document.getElementById("right").addEventListener("click", () => {
+  document.querySelector("[data-direction=right]").addEventListener("click", () => {
     moveRobot(1,0);
   });
-  document.getElementById("left").addEventListener("click", () => {
+  document.querySelector("[data-direction=left]").addEventListener("click", () => {
     moveRobot(0,1)
   })
 }
