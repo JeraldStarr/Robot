@@ -1,35 +1,19 @@
-//pozycja robota
 let positionX = 0;
 let positionY = 0;
-//ile pól pozostało do zlikwidowania
 let fieldsLeft = 0;
 
 function init () {
   const board = document.querySelector(".gameBoard");
   const fieldsOnBoard = 36;
-  const fieldSize = 60;
-  const boardSize = 6;
-  board.innerHTML = "";
   //wstawianie 36 "divów"
   for (let i = 0; i < fieldsOnBoard; i++) {
-    let id = "sqrt" + i;
-    board.innerHTML += "<div class='gameBoard__square' id='sqrt" + i + "'> </div>";
-    const field = document.getElementById(id);
-    setSquarePosition(field, boardSize, fieldSize, i);
-    drawSquareColor(field);
+    createSquare(board, i);
+    setSquare(i);
   }
   createRobot(board);
   setInformationAboutLeftDarkFields();
   setListenerToBtnClick()
 }
-
-function moveRobot(x, y) {
-  changeRobotPosition(x, y);
-  checkIfSquareCanBeChanged();
-  setNewPositionForRobot();
-  setInformationAboutLeftDarkFields();
-}
-
 
 function pointActiveSquare() {
   let nr = positionY / 10 + positionX / 60;
@@ -130,6 +114,26 @@ function drawSquareColor(field) {
 function setSquarePosition(field, boardSize, fieldSize, i) {
   field.style.left = (i % boardSize) * fieldSize + "px";
   field.style.top = Math.floor(i / boardSize) * fieldSize + "px";
+}
+
+function setSquare(i) {
+  const id = "sqrt" + i;
+  const field = document.getElementById(id);
+  const fieldSize = 60;
+  const boardSize = 6;
+  setSquarePosition(field, boardSize, fieldSize, i);
+  drawSquareColor(field);
+}
+
+function createSquare (board, i) {
+  board.innerHTML += `<div class='gameBoard__square' id='sqrt${i}'> </div>`;
+}
+
+function moveRobot(x, y) {
+  changeRobotPosition(x, y);
+  checkIfSquareCanBeChanged();
+  setNewPositionForRobot();
+  setInformationAboutLeftDarkFields();
 }
 
 init();
