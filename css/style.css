@@ -71,7 +71,9 @@ body {
 }
 .UIwrapper__result {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   flex-basis: 20vw;
   font-size: 30px;
   letter-spacing: 2px;
