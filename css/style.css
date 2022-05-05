@@ -48,7 +48,6 @@ body {
   height: 60px;
   background: #616263;
   position: absolute;
-  transition: 0.3s;
 }
 .gameBoard__robot {
   width: 60px;

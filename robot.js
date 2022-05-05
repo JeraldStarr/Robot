@@ -6,12 +6,12 @@ let fieldsLeft = 0;
 
 function init () {
   const board = document.querySelector(".gameBoard");
-  const howMuchFields = 36;
+  const fieldsOnBoard = 36;
   const fieldSize = 60;
   const boardSize = 6;
   board.innerHTML = "";
   //wstawianie 36 "divów"
-  for (let i = 0; i < howMuchFields; i++) {
+  for (let i = 0; i < fieldsOnBoard; i++) {
     let id = "sqrt" + i;
     board.innerHTML += "<div class='gameBoard__square' id='sqrt" + i + "'> </div>";
     const field = document.getElementById(id);
