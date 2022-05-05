@@ -15,14 +15,8 @@ function init () {
     let id = "sqrt" + i;
     board.innerHTML += "<div class='gameBoard__square' id='sqrt" + i + "'> </div>";
     const field = document.getElementById(id);
-    field.style.left = (i % boardSize) * fieldSize + "px";
-    field.style.top = Math.floor(i / boardSize) * fieldSize + "px";
-    //losowanie koloru i zliczanie ciemnozielonych pól
-    if (Math.random() < 0.5)
-    field.style.visibility = "hidden";
-    else {
-      changeSquareForVisible(field);
-    }
+    setSquarePosition(field, boardSize, fieldSize, i);
+    drawSquareColor(field);
   }
   createRobot(board);
   setInformationAboutLeftDarkFields();
@@ -132,6 +126,19 @@ function createRobot(board) {
 function setInformationAboutLeftDarkFields() {
   let fieldsLeftHTMLDisplayer = document.getElementById("ile");
   fieldsLeftHTMLDisplayer.textContent = fieldsLeft;
+}
+
+function drawSquareColor(field) {
+  if (Math.random() < 0.5)
+  field.style.visibility = "hidden";
+  else {
+    changeSquareForVisible(field);
+  }
+}
+
+function setSquarePosition(field, boardSize, fieldSize, i) {
+  field.style.left = (i % boardSize) * fieldSize + "px";
+  field.style.top = Math.floor(i / boardSize) * fieldSize + "px";
 }
 
 init();
