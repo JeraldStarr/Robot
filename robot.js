@@ -5,7 +5,7 @@ let positionY = 0;
 let fieldsLeft = 0;
 
 init = () => {
-  const board = document.getElementById("gameBoard");
+  const board = document.querySelector(".gameBoard");
   const howMuchFields = 36;
   const fieldSize = 60;
   const boardSize = 6;
@@ -13,7 +13,7 @@ init = () => {
   //wstawianie 36 "divów"
   for (let i = 0; i < howMuchFields; i++) {
     let id = "sqrt" + i;
-    board.innerHTML += "<div class='square' id='sqrt" + i + "'> </div>";
+    board.innerHTML += "<div class='gameBoard__square' id='sqrt" + i + "'> </div>";
     const field = document.getElementById(id);
     field.style.left = (i % boardSize) * fieldSize + "px";
     field.style.top = Math.floor(i / boardSize) * fieldSize + "px";
@@ -21,13 +21,14 @@ init = () => {
     if (Math.random() < 0.5)
     field.style.visibility = "hidden";
     else {
-      field .style.visibility = "visible";
+      field.style.visibility = "visible";
       fieldsLeft += 1;
     }
   }
   //dodanie robota
-  board.innerHTML += "<div id='robot'><img src='robot.png'></div>";
-  const robot = document.getElementById("robot");
+  board.innerHTML += "<div class='gameBoard__robot'><img src='robot.png'></div>";
+  const robot = document.querySelector(".gameBoard__robot");
+  console.log(robot)
   positionX = 0;
   positionY = 0;
   robot.style.top = positionX + "px";
@@ -38,7 +39,7 @@ init = () => {
 }
 
 move = (x, y) => {
-  const robot = document.getElementById("robot");
+  const robot = document.querySelector(".gameBoard__robot");
 
   if (x === 1) positionX += 60;
   if (x === -1) positionX -= 60;

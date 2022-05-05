@@ -12,38 +12,6 @@ body
   justify-content: space-around
   font-family: 'Lobster', cursive
   background-color: #e6e7e8
-  h1 
-    font-size: 110px
-    text-align: center
-    flex-basis: 100vw
-    height: 15vh
-    margin-top: 10vh;
-    letter-spacing: 5px
-  #description  
-    display: flex
-    justify-content: center
-    align-items: center
-    flex-basis: 100vw
-    p 
-        text-align: center
-        width: 50vw
-  #gameBoard 
-    width: 360px 
-    height: 360px
-    background: #afb0b3
-    position: relative
-    float: left  
-    .square   
-        width: 60px
-        height: 60px
-        background: #616263
-        position: absolute
-    #robot
-        width: 60px
-        height: 60px
-        position: absolute
-        text-align:center
-        margin: 0 auto
   #UIwrapper 
         display: flex
         justify-content: space-around
@@ -57,6 +25,7 @@ body
             float: left
             margin: 1px
             font-size: 32px
+            line-height: 32px
             text-align: center
             &:hover 
                 cursor: pointer
@@ -77,3 +46,38 @@ body
             font-size: 30px
             letter-spacing: 2px
 
+.title
+  font-size: 110px
+  text-align: center
+  flex-basis: 100vw
+  height: 15vh
+  margin-top: 10vh
+  letter-spacing: 5px
+
+.description  
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-basis: 100vw
+  margin-bottom: 5vh
+  &__text 
+    text-align: center
+    width: 50vw
+  
+.gameBoard
+  width: 360px 
+  height: 360px
+  background: #afb0b3
+  position: relative
+  float: left  
+  &__square   
+    width: 60px
+    height: 60px
+    background: #616263
+    position: absolute
+  &__robot
+    width: 60px
+    height: 60px
+    position: absolute
+    text-align:center
+    margin: 0 auto

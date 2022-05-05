@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100vw;
+  height: 100vh;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-family: 'Lobster', cursive;
+  background-color: #e6e7e8;
+}
+
+body h1 {
+  font-size: 110px;
+  text-align: center;
+  -ms-flex-preferred-size: 100vw;
+      flex-basis: 100vw;
+  height: 15vh;
+  letter-spacing: 5px;
+}
+
+body #description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-preferred-size: 100vw;
+      flex-basis: 100vw;
+}
+
+body #description p {
+  text-align: center;
+  width: 50vw;
+}
+
+body #gameBoard {
+  width: 360px;
+  height: 360px;
+  background: #afb0b3;
+  position: relative;
+  float: left;
+}
+
+body #gameBoard .square {
+  width: 60px;
+  height: 60px;
+  background: #616263;
+  position: absolute;
+}
+
+body #gameBoard #robot {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  margin: 0 auto;
+}
+
+body #UIwrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-preferred-size: 40vw;
+      flex-basis: 40vw;
+  height: 40vh;
+}
+
+body #UIwrapper .button {
+  width: 40px;
+  height: 40px;
+  background: #ff0000;
+  float: left;
+  margin: 1px;
+  font-size: 32px;
+  text-align: center;
+}
+
+body #UIwrapper .button:hover {
+  cursor: pointer;
+  -webkit-filter: brightness(90%);
+          filter: brightness(90%);
+}
+
+body #UIwrapper .empty {
+  width: 40px;
+  height: 40px;
+  background: #e6e7e8;
+  float: left;
+  margin: 1px;
+  font-size: 32px;
+}
+
+body #UIwrapper .break {
+  clear: both;
+}
+
+body #UIwrapper #result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-preferred-size: 20vw;
+      flex-basis: 20vw;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
+/*# sourceMappingURL=style.css.map */
