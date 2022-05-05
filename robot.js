@@ -4,7 +4,7 @@ let positionY = 0;
 //ile pól pozostało do zlikwidowania
 let fieldsLeft = 0;
 
-init = () => {
+function init () {
   const board = document.querySelector(".gameBoard");
   const howMuchFields = 36;
   const fieldSize = 60;
@@ -28,24 +28,62 @@ init = () => {
   //dodanie robota
   board.innerHTML += "<div class='gameBoard__robot'><img src='robot.png'></div>";
   const robot = document.querySelector(".gameBoard__robot");
-  console.log(robot)
   positionX = 0;
   positionY = 0;
   robot.style.top = positionX + "px";
   robot.style.left = positionY + "px";
   //ustawienie komunikatu o ciemnozielonych polach
   const fieldsLeftHTMLDisplayer = document.getElementById("ile");
-  fieldsLeftHTMLDisplayer.innerHTML = fieldsLeft;
+  fieldsLeftHTMLDisplayer.textContent = fieldsLeft;
+
+  setListenerToBtnClick()
 }
 
-move = (x, y) => {
+function move(x, y) {
   const robot = document.querySelector(".gameBoard__robot");
+  changeRobotPosition(x, y);
+  limitMovment();
 
+  robot.style.left = `${positionX}px`;
+  robot.style.top = `${positionY}px`;
+
+  //ustawienie komunikatu o ciemnozielonych polach
+  let fieldsLeftHTMLDisplayer = document.getElementById("ile");
+  fieldsLeftHTMLDisplayer.textContent = fieldsLeft;
+}
+
+
+function pointActiveSquare() {
+  let nr = positionY / 10 + positionX / 60;
+  const square = document.getElementById("sqrt" + nr);
+  return square;
+}
+
+function setListenerToBtnClick() {
+
+  document.getElementById("up").addEventListener("click", () => {
+    move(0,-1);
+  });
+  document.getElementById("down").addEventListener("click", () => {
+    move(-1,0);
+  });
+  document.getElementById("right").addEventListener("click", () => {
+    move(1,0);
+  });
+  document.getElementById("left").addEventListener("click", () => {
+    move(0,1)
+  })
+}
+
+function changeRobotPosition(x, y) {
+  console.log(positionX, positionY)
   if (x === 1) positionX += 60;
   if (x === -1) positionX -= 60;
   if (y === 1) positionY += 60;
   if (y === -1) positionY -= 60;
+}
 
+function limitMovment() {
   if (positionX > 300) {
     positionX = 300;
   } else if (positionX < 0) {
@@ -61,40 +99,14 @@ move = (x, y) => {
       activeSquare.style.visibility = "hidden";
       fieldsLeft -= 1;
       if (fieldsLeft === 0) {
-        document.getElementById("result").textContent = "Gratulacje! Wygrałeś!";
+        document.querySelector(".UIwrapper__result").textContent = "Gratulacje! Wygrałeś!";
       }
     } else {
       activeSquare.style.visibility = "visible";
       fieldsLeft += 1;
     }
   }
-
-  robot.style.left = `${positionX}px`;
-  robot.style.top = `${positionY}px`;
-
-  //ustawienie komunikatu o ciemnozielonych polach
-  let fieldsLeftHTMLDisplayer = document.getElementById("ile");
-  fieldsLeftHTMLDisplayer.innerHTML = fieldsLeft;
 }
 
 
-pointActiveSquare = () => {
-  let nr = positionY / 10 + positionX / 60;
-  const square = document.getElementById("sqrt" + nr);
-  return square;
-}
-
-window.addEventListener("load", init);
-const upButton = document.getElementById("up");
-document.getElementById("up").addEventListener("click", () => {
-  move(0,-1);
-});
-document.getElementById("down").addEventListener("click", () => {
-  move(-1,0);
-});
-document.getElementById("right").addEventListener("click", () => {
-  move(1,0);
-});
-document.getElementById("left").addEventListener("click", () => {
-  move(0,1)
-})
+init();
