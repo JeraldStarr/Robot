@@ -17,6 +17,8 @@ body {
   justify-content: space-around;
   font-family: "Orbitron";
   background-color: #e6e7e8;
+  max-width: 1400px;
+  margin: auto;
 }
 
 .title {
@@ -26,6 +28,11 @@ body {
   height: 15vh;
   margin-top: 7vh;
   letter-spacing: 5px;
+}
+@media (min-width: 1400px) {
+  .title {
+    font-size: 150px;
+  }
 }
 
 .description {
@@ -37,7 +44,13 @@ body {
 }
 .description__text {
   text-align: center;
-  width: 50vw;
+  width: 640px;
+}
+@media (min-width: 1400px) {
+  .description__text {
+    width: 1000px;
+    font-size: 25px;
+  }
 }
 
 .gameBoard {
@@ -67,7 +80,7 @@ body {
   justify-content: space-around;
   align-items: center;
   flex-basis: 50vw;
-  height: 40vh;
+  height: 360px;
 }
 .UIwrapper__result {
   display: flex;
@@ -77,6 +90,11 @@ body {
   flex-basis: 25vw;
   font-size: 30px;
   letter-spacing: 2px;
+}
+@media (min-width: 1400px) {
+  .UIwrapper__result {
+    font-size: 35px;
+  }
 }
 .UIwrapper__button {
   width: 40px;
