@@ -31,6 +31,18 @@ body {
     align-items: center;
   }
 }
+@media (max-width: 360px) {
+  body {
+    padding-top: 10px;
+    padding-bottom: 13px;
+  }
+}
+@media (max-width: 320px) {
+  body {
+    align-items: flex-start;
+    height: auto;
+  }
+}
 
 .title {
   font-size: 110px;
@@ -45,11 +57,27 @@ body {
     font-size: 150px;
   }
 }
-@media (max-width: 790px) {
+@media (max-width: 795px) {
   .title {
     flex-basis: auto;
     height: auto;
     margin-top: 0;
+  }
+}
+@media (max-height: 790px) and (max-width: 790px) {
+  .title {
+    font-size: 60px;
+  }
+}
+@media (max-width: 450px) {
+  .title {
+    font-size: 30px;
+    letter-spacing: 10px;
+  }
+}
+@media (max-height: 570px) {
+  .title {
+    display: none;
   }
 }
 
@@ -66,6 +94,11 @@ body {
     margin-bottom: 20px;
   }
 }
+@media (max-height: 670px) {
+  .description {
+    display: none;
+  }
+}
 .description__text {
   text-align: center;
   width: 640px;
@@ -74,6 +107,11 @@ body {
   .description__text {
     width: 1000px;
     font-size: 25px;
+  }
+}
+@media (max-width: 790px) {
+  .description__text {
+    width: auto;
   }
 }
 
@@ -110,7 +148,18 @@ body {
   .UIwrapper {
     height: auto;
     flex-basis: 200px;
-    width: 70vw;
+    width: 90vw;
+  }
+}
+@media (max-width: 360px) {
+  .UIwrapper {
+    flex-basis: auto;
+  }
+}
+@media (max-width: 320px) {
+  .UIwrapper {
+    width: 100vw;
+    flex-basis: auto;
   }
 }
 .UIwrapper__result {
@@ -131,6 +180,17 @@ body {
 @media (max-width: 790px) {
   .UIwrapper__result {
     flex-grow: 3;
+  }
+}
+@media (max-width: 450px) {
+  .UIwrapper__result {
+    flex-grow: 10;
+    font-size: 20px;
+  }
+}
+@media (max-width: 320px) {
+  .UIwrapper__result {
+    font-size: 15px;
   }
 }
 .UIwrapper__button {
@@ -156,6 +216,11 @@ body {
 @media (max-width: 790px) {
   .UIwrapper__UIPanel {
     flex-grow: 2;
+  }
+}
+@media (max-width: 450px) {
+  .UIwrapper__UIPanel {
+    flex-grow: 1;
   }
 }
 .UIwrapper__empty {
