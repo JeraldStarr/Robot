@@ -3,11 +3,14 @@
   justify-content: center
   align-items: center
   flex-basis: 100vw
-  margin-bottom: 10vh
+  @media (min-width: 1000px) and (max-width: 1400px) and (min-height: 1200px) and (max-height: 1400px)
+  margin-bottom: 120px
+  @media (max-width: 790px)
+    flex-basis: auto
+    margin-bottom: 20px
   &__text 
     text-align: center
     width: 640px
     @media (min-width: 1400px)
       width: 1000px
       font-size: 25px
-  

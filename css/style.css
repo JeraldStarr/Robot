@@ -20,18 +20,36 @@ body {
   max-width: 1400px;
   margin: auto;
 }
+@media (min-width: 1000px) and (max-width: 1400px) and (min-height: 1200px) and (max-height: 1400px) {
+  body {
+    height: 80vh;
+  }
+}
+@media (max-width: 790px) {
+  body {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
 .title {
   font-size: 110px;
   text-align: center;
   flex-basis: 100vw;
   height: 15vh;
-  margin-top: 7vh;
   letter-spacing: 5px;
+  margin-top: 100px;
 }
 @media (min-width: 1400px) {
   .title {
     font-size: 150px;
+  }
+}
+@media (max-width: 790px) {
+  .title {
+    flex-basis: auto;
+    height: auto;
+    margin-top: 0;
   }
 }
 
@@ -40,7 +58,13 @@ body {
   justify-content: center;
   align-items: center;
   flex-basis: 100vw;
-  margin-bottom: 10vh;
+  margin-bottom: 120px;
+}
+@media (max-width: 790px) {
+  .description {
+    flex-basis: auto;
+    margin-bottom: 20px;
+  }
 }
 .description__text {
   text-align: center;
@@ -82,6 +106,13 @@ body {
   flex-basis: 50vw;
   height: 360px;
 }
+@media (max-width: 790px) {
+  .UIwrapper {
+    height: auto;
+    flex-basis: 200px;
+    width: 70vw;
+  }
+}
 .UIwrapper__result {
   display: flex;
   flex-direction: column;
@@ -90,10 +121,16 @@ body {
   flex-basis: 25vw;
   font-size: 30px;
   letter-spacing: 2px;
+  flex-grow: 4;
 }
 @media (min-width: 1400px) {
   .UIwrapper__result {
     font-size: 35px;
+  }
+}
+@media (max-width: 790px) {
+  .UIwrapper__result {
+    flex-grow: 3;
   }
 }
 .UIwrapper__button {
@@ -115,6 +152,11 @@ body {
   filter: brightness(90%);
   color: #ff0000;
   background-color: #fff;
+}
+@media (max-width: 790px) {
+  .UIwrapper__UIPanel {
+    flex-grow: 2;
+  }
 }
 .UIwrapper__empty {
   width: 40px;

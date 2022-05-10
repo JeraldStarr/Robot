@@ -4,6 +4,10 @@
   align-items: center
   flex-basis: 50vw
   height: 360px
+  @media (max-width: 790px)
+    height: auto
+    flex-basis: 200px
+    width: 70vw
   &__result
     display: flex
     flex-direction: column
@@ -12,8 +16,11 @@
     flex-basis: 25vw
     font-size: 30px
     letter-spacing: 2px
+    flex-grow: 4
     @media (min-width: 1400px)
       font-size: 35px
+    @media (max-width: 790px)
+      flex-grow: 3
   &__button 
     width: 40px
     height: 40px
@@ -32,6 +39,9 @@
       filter: brightness(90%)
       color: #ff0000
       background-color: #fff
+  &__UIPanel
+    @media (max-width: 790px)
+      flex-grow: 2
   &__empty 
     width: 40px
     height: 40px
