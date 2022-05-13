@@ -14,7 +14,8 @@ function init () {
   }
   createRobot(board);
   setInformationAboutLeftDarkFields();
-  setListenerToBtnClick()
+  setListenerToBtnClick();
+  setListenerToArrowKeyPress();
 }
 
 function pointActiveSquare() {
@@ -25,24 +26,42 @@ function pointActiveSquare() {
 
 function setListenerToBtnClick() {
   document.querySelector("[data-direction=up]").addEventListener("click", () => {
-    moveRobot(0,-1);
-    moves++;
-    displayMoves();
-  });
-  document.querySelector("[data-direction=down]").addEventListener("click", () => {
-    moveRobot(-1,0);
-    moves++;
-    displayMoves();
-  });
-  document.querySelector("[data-direction=right]").addEventListener("click", () => {
-    moveRobot(1,0);
-    moves++;
-    displayMoves();
+    moveUp();
   });
   document.querySelector("[data-direction=left]").addEventListener("click", () => {
-    moveRobot(0,1)
-    moves++;
-    displayMoves();
+    moveLeft();
+  });
+  document.querySelector("[data-direction=right]").addEventListener("click", () => {
+    moveRight();
+  });
+  document.querySelector("[data-direction=down]").addEventListener("click", () => {
+    moveDown();
+  })
+}
+
+function setListenerToArrowKeyPress() {
+  document.addEventListener("keydown", e => {
+    switch(e.keyCode) {
+      case 38:
+        moveUp();
+        showPressedKey("up");
+      break;
+      case 40:
+        moveDown();
+        showPressedKey("down");
+      break;
+      case 39:
+        moveRight();
+        showPressedKey("right");
+      break;
+      case 37:
+        moveLeft();
+        showPressedKey("left");
+      break;
+      default:
+        console.log("Unhandled key");
+      break;
+    }
   })
 }
 
@@ -151,6 +170,39 @@ function moveRobot(x, y) {
 
 function displayMoves() {
   document.querySelector(".UIwrapper__moves").textContent = moves;
+}
+
+function moveUp() {
+  moveRobot(0,-1);
+  moves++;
+  displayMoves();
+}
+
+function moveDown() {
+  moveRobot(0, 1);
+  moves++;
+  displayMoves();
+}
+
+function moveLeft() {
+  moveRobot(-1,0)
+  moves++;
+  displayMoves();
+}
+
+function moveRight() {
+  moveRobot(1,0);
+  moves++;
+  displayMoves();
+}
+
+function showPressedKey(direction) {
+  const modifier = "UIwrapper__button--active";
+  const directionKeyClassList = document.querySelector(`[data-direction=${direction}]`).classList;
+  directionKeyClassList.add(modifier);
+  setTimeout(() => {
+    directionKeyClassList.remove(modifier);
+  }, 150);
 }
 
 init();
