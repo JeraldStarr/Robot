@@ -26,24 +26,38 @@ function pointActiveSquare() {
 
 function setListenerToBtnClick() {
   document.querySelector("[data-direction=up]").addEventListener("click", () => {
-    moveRobot(0,-1);
-    moves++;
-    displayMoves();
-  });
-  document.querySelector("[data-direction=down]").addEventListener("click", () => {
-    moveRobot(-1,0);
-    moves++;
-    displayMoves();
-  });
-  document.querySelector("[data-direction=right]").addEventListener("click", () => {
-    moveRobot(1,0);
-    moves++;
-    displayMoves();
+    moveUp();
   });
   document.querySelector("[data-direction=left]").addEventListener("click", () => {
-    moveRobot(0,1)
-    moves++;
-    displayMoves();
+    moveLeft();
+  });
+  document.querySelector("[data-direction=right]").addEventListener("click", () => {
+    moveRight();
+  });
+  document.querySelector("[data-direction=down]").addEventListener("click", () => {
+    moveDown();
+  })
+}
+
+function setListenerToArrowKeyPress() {
+  document.addEventListener("keydown", e => {
+    switch(e.keyCode) {
+      case 38:
+        moveUp();
+      break;
+      case 40:
+        moveDown();
+      break;
+      case 39:
+        moveRight();
+      break;
+      case 37:
+        moveLeft();
+      break;
+      default:
+        console.log("Unhandled key");
+      break;
+    }
   })
 }
 
