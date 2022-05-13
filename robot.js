@@ -44,15 +44,19 @@ function setListenerToArrowKeyPress() {
     switch(e.keyCode) {
       case 38:
         moveUp();
+        showPressedKey("up");
       break;
       case 40:
         moveDown();
+        showPressedKey("down");
       break;
       case 39:
         moveRight();
+        showPressedKey("right");
       break;
       case 37:
         moveLeft();
+        showPressedKey("left");
       break;
       default:
         console.log("Unhandled key");
@@ -190,6 +194,15 @@ function moveRight() {
   moveRobot(1,0);
   moves++;
   displayMoves();
+}
+
+function showPressedKey(direction) {
+  const modifier = "UIwrapper__button--active";
+  const directionKeyClassList = document.querySelector(`[data-direction=${direction}]`).classList;
+  directionKeyClassList.add(modifier);
+  setTimeout(() => {
+    directionKeyClassList.remove(modifier);
+  }, 150);
 }
 
 init();
