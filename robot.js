@@ -47,7 +47,6 @@ function setListenerToBtnClick() {
 }
 
 function changeRobotPosition(x, y) {
-  console.log(positionX, positionY)
   if (x === 1) positionX += 60;
   if (x === -1) positionX -= 60;
   if (y === 1) positionY += 60;
@@ -57,12 +56,16 @@ function changeRobotPosition(x, y) {
 function checkIfSquareCanBeChanged() {
   if (positionX > 300) {
     positionX = 300;
+    moves--;
   } else if (positionX < 0) {
     positionX = 0
+    moves--;
   } else if (positionY > 300) {
     positionY = 300;
+    moves--;
   } else if (positionY < 0) {
     positionY = 0;
+    moves--;
   } else {
     changeSquare();
   }
