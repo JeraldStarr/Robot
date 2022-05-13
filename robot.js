@@ -14,7 +14,8 @@ function init () {
   }
   createRobot(board);
   setInformationAboutLeftDarkFields();
-  setListenerToBtnClick()
+  setListenerToBtnClick();
+  setListenerToArrowKeyPress();
 }
 
 function pointActiveSquare() {
@@ -151,6 +152,30 @@ function moveRobot(x, y) {
 
 function displayMoves() {
   document.querySelector(".UIwrapper__moves").textContent = moves;
+}
+
+function moveUp() {
+  moveRobot(0,-1);
+  moves++;
+  displayMoves();
+}
+
+function moveDown() {
+  moveRobot(0, 1);
+  moves++;
+  displayMoves();
+}
+
+function moveLeft() {
+  moveRobot(-1,0)
+  moves++;
+  displayMoves();
+}
+
+function moveRight() {
+  moveRobot(1,0);
+  moves++;
+  displayMoves();
 }
 
 init();
