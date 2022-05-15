@@ -2,6 +2,7 @@ let positionX = 0;
 let positionY = 0;
 let fieldsLeft = 0;
 let moves = 0;
+let squaresToRemove = 0;
 
 
 function init () {
@@ -16,6 +17,7 @@ function init () {
   setInformationAboutLeftDarkFields();
   setListenerToBtnClick();
   setListenerToArrowKeyPress();
+  squaresToRemove = fieldsLeft;
 }
 
 function pointActiveSquare() {
@@ -118,7 +120,12 @@ function changeSquareForUnvisible (square) {
 }
 
 function showVictoryMessage() {
-  document.querySelector(".UIwrapper__result").textContent = "Gratulacje! Wygrałeś!";
+
+  const result = squaresToRemove;
+  document.querySelector(".UIwrapper__result").innerHTML = `
+    <div>Gratulacje! Wygrałeś!<div/>
+    <div>Twój wynik: ${result}</div>
+  `;
 }
 
 function createRobot(board) {
