@@ -2,6 +2,7 @@ let positionX = 0;
 let positionY = 0;
 let fieldsLeft = 0;
 let moves = 0;
+let squaresToRemove = 0;
 
 
 function init () {
@@ -13,9 +14,10 @@ function init () {
     setSquare(i);
   }
   createRobot(board);
-  setInformationAboutLeftDarkFields();
+  setInformationAboutLeftFields();
   setListenerToBtnClick();
   setListenerToArrowKeyPress();
+  squaresToRemove = fieldsLeft;
 }
 
 function pointActiveSquare() {
@@ -25,44 +27,38 @@ function pointActiveSquare() {
 }
 
 function setListenerToBtnClick() {
-  document.querySelector("[data-direction=up]").addEventListener("click", () => {
-    moveUp();
-  });
-  document.querySelector("[data-direction=left]").addEventListener("click", () => {
-    moveLeft();
-  });
-  document.querySelector("[data-direction=right]").addEventListener("click", () => {
-    moveRight();
-  });
-  document.querySelector("[data-direction=down]").addEventListener("click", () => {
-    moveDown();
-  })
+  document.querySelector("[data-direction=up]").addEventListener("click", moveUp);
+  document.querySelector("[data-direction=left]").addEventListener("click", moveLeft);
+  document.querySelector("[data-direction=right]").addEventListener("click", moveRight);
+  document.querySelector("[data-direction=down]").addEventListener("click", moveDown);
 }
 
 function setListenerToArrowKeyPress() {
-  document.addEventListener("keydown", e => {
-    switch(e.keyCode) {
-      case 38:
-        moveUp();
-        showPressedKey("up");
-      break;
-      case 40:
-        moveDown();
-        showPressedKey("down");
-      break;
-      case 39:
-        moveRight();
-        showPressedKey("right");
-      break;
-      case 37:
-        moveLeft();
-        showPressedKey("left");
-      break;
-      default:
-        console.log("Unhandled key");
-      break;
-    }
-  })
+  document.addEventListener("keydown", handleArrowHardwareKeys)
+}
+
+function handleArrowHardwareKeys(e) {
+  switch(e.keyCode) {
+    case 38:
+      moveUp();
+      showPressedKey("up");
+    break;
+    case 40:
+      moveDown();
+      showPressedKey("down");
+    break;
+    case 39:
+      moveRight();
+      showPressedKey("right");
+    break;
+    case 37:
+      moveLeft();
+      showPressedKey("left");
+    break;
+    default:
+      console.log("Unhandled key");
+    break;
+  }
 }
 
 function changeRobotPosition(x, y) {
@@ -101,6 +97,7 @@ function changeSquare() {
     changeSquareForUnvisible(activeSquare);
     if (fieldsLeft === 0) {
       showVictoryMessage();
+      blockRobotMoving();
     }
   } else {
     changeSquareForVisible(activeSquare);
@@ -118,7 +115,12 @@ function changeSquareForUnvisible (square) {
 }
 
 function showVictoryMessage() {
-  document.querySelector(".UIwrapper__result").textContent = "Gratulacje! Wygrałeś!";
+  const result = squaresToRemove;
+  console.log(result)
+  document.querySelector(".UIwrapper__result").innerHTML = `
+    <div>Gratulacje! Wygrałeś!<div/>
+    <div>Twój wynik: ${(result/moves).toFixed(2)}</div>
+  `;
 }
 
 function createRobot(board) {
@@ -130,9 +132,11 @@ function createRobot(board) {
   robot.style.left = positionY + "px";
 }
 
-function setInformationAboutLeftDarkFields() {
-  let fieldsLeftHTMLDisplayer = document.getElementById("ile");
-  fieldsLeftHTMLDisplayer.textContent = fieldsLeft;
+function setInformationAboutLeftFields() {
+  const fieldsLeftHTMLDisplayer = document.getElementById("ile");
+  if(fieldsLeftHTMLDisplayer) {
+    fieldsLeftHTMLDisplayer.textContent = fieldsLeft;
+  }
 }
 
 function drawSquareColor(field) {
@@ -165,11 +169,15 @@ function moveRobot(x, y) {
   changeRobotPosition(x, y);
   checkIfSquareCanBeChanged();
   setNewPositionForRobot();
-  setInformationAboutLeftDarkFields();
+  setInformationAboutLeftFields();
 }
 
 function displayMoves() {
-  document.querySelector(".UIwrapper__moves").textContent = moves;
+  const uiWrapperMoves = document.querySelector(".UIwrapper__moves");
+  if (uiWrapperMoves) {
+    uiWrapperMoves.textContent = moves;
+  }
+
 }
 
 function moveUp() {
@@ -203,6 +211,17 @@ function showPressedKey(direction) {
   setTimeout(() => {
     directionKeyClassList.remove(modifier);
   }, 150);
+}
+
+function blockRobotMoving() {
+  document.querySelectorAll(".UIwrapper__button").forEach(btn => {
+    document.removeEventListener("keydown", handleArrowHardwareKeys);
+  })
+
+  document.querySelector("[data-direction=up]").removeEventListener("click", moveUp);
+  document.querySelector("[data-direction=left]").removeEventListener("click", moveLeft);
+  document.querySelector("[data-direction=right]").removeEventListener("click", moveRight);
+  document.querySelector("[data-direction=down]").removeEventListener("click", moveDown);
 }
 
 init();
