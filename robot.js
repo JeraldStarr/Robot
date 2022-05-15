@@ -120,11 +120,11 @@ function changeSquareForUnvisible (square) {
 }
 
 function showVictoryMessage() {
-
   const result = squaresToRemove;
+  console.log(result)
   document.querySelector(".UIwrapper__result").innerHTML = `
     <div>Gratulacje! Wygrałeś!<div/>
-    <div>Twój wynik: ${result}</div>
+    <div>Twój wynik: ${(result/moves).toFixed(2)}</div>
   `;
 }
 
