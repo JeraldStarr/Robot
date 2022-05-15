@@ -14,7 +14,7 @@ function init () {
     setSquare(i);
   }
   createRobot(board);
-  setInformationAboutLeftDarkFields();
+  setInformationAboutLeftFields();
   setListenerToBtnClick();
   setListenerToArrowKeyPress();
   squaresToRemove = fieldsLeft;
@@ -137,9 +137,11 @@ function createRobot(board) {
   robot.style.left = positionY + "px";
 }
 
-function setInformationAboutLeftDarkFields() {
-  let fieldsLeftHTMLDisplayer = document.getElementById("ile");
-  fieldsLeftHTMLDisplayer.textContent = fieldsLeft;
+function setInformationAboutLeftFields() {
+  const fieldsLeftHTMLDisplayer = document.getElementById("ile");
+  if(fieldsLeftHTMLDisplayer) {
+    fieldsLeftHTMLDisplayer.textContent = fieldsLeft;
+  }
 }
 
 function drawSquareColor(field) {
@@ -172,11 +174,15 @@ function moveRobot(x, y) {
   changeRobotPosition(x, y);
   checkIfSquareCanBeChanged();
   setNewPositionForRobot();
-  setInformationAboutLeftDarkFields();
+  setInformationAboutLeftFields();
 }
 
 function displayMoves() {
-  document.querySelector(".UIwrapper__moves").textContent = moves;
+  const uiWrapperMoves = document.querySelector(".UIwrapper__moves");
+  if (uiWrapperMoves) {
+    uiWrapperMoves.textContent = moves;
+  }
+
 }
 
 function moveUp() {
