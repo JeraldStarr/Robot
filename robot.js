@@ -27,44 +27,38 @@ function pointActiveSquare() {
 }
 
 function setListenerToBtnClick() {
-  document.querySelector("[data-direction=up]").addEventListener("click", () => {
-    moveUp();
-  });
-  document.querySelector("[data-direction=left]").addEventListener("click", () => {
-    moveLeft();
-  });
-  document.querySelector("[data-direction=right]").addEventListener("click", () => {
-    moveRight();
-  });
-  document.querySelector("[data-direction=down]").addEventListener("click", () => {
-    moveDown();
-  })
+  document.querySelector("[data-direction=up]").addEventListener("click", moveUp);
+  document.querySelector("[data-direction=left]").addEventListener("click", moveLeft);
+  document.querySelector("[data-direction=right]").addEventListener("click", moveRight);
+  document.querySelector("[data-direction=down]").addEventListener("click", moveDown);
 }
 
 function setListenerToArrowKeyPress() {
-  document.addEventListener("keydown", e => {
-    switch(e.keyCode) {
-      case 38:
-        moveUp();
-        showPressedKey("up");
-      break;
-      case 40:
-        moveDown();
-        showPressedKey("down");
-      break;
-      case 39:
-        moveRight();
-        showPressedKey("right");
-      break;
-      case 37:
-        moveLeft();
-        showPressedKey("left");
-      break;
-      default:
-        console.log("Unhandled key");
-      break;
-    }
-  })
+  document.addEventListener("keydown", handleArrowHardwareKeys)
+}
+
+function handleArrowHardwareKeys(e) {
+  switch(e.keyCode) {
+    case 38:
+      moveUp();
+      showPressedKey("up");
+    break;
+    case 40:
+      moveDown();
+      showPressedKey("down");
+    break;
+    case 39:
+      moveRight();
+      showPressedKey("right");
+    break;
+    case 37:
+      moveLeft();
+      showPressedKey("left");
+    break;
+    default:
+      console.log("Unhandled key");
+    break;
+  }
 }
 
 function changeRobotPosition(x, y) {
@@ -103,6 +97,7 @@ function changeSquare() {
     changeSquareForUnvisible(activeSquare);
     if (fieldsLeft === 0) {
       showVictoryMessage();
+      blockRobotMoving();
     }
   } else {
     changeSquareForVisible(activeSquare);
@@ -216,6 +211,17 @@ function showPressedKey(direction) {
   setTimeout(() => {
     directionKeyClassList.remove(modifier);
   }, 150);
+}
+
+function blockRobotMoving() {
+  document.querySelectorAll(".UIwrapper__button").forEach(btn => {
+    document.removeEventListener("keydown", handleArrowHardwareKeys);
+  })
+
+  document.querySelector("[data-direction=up]").removeEventListener("click", moveUp);
+  document.querySelector("[data-direction=left]").removeEventListener("click", moveLeft);
+  document.querySelector("[data-direction=right]").removeEventListener("click", moveRight);
+  document.querySelector("[data-direction=down]").removeEventListener("click", moveDown);
 }
 
 init();
