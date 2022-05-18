@@ -7,6 +7,8 @@ let squaresToRemove = 0;
 
 function init () {
   const board = document.querySelector(".gameBoard");
+  if (!board) return;
+  
   const fieldsOnBoard = 36;
 
   for (let i = 0; i < fieldsOnBoard; i++) {
@@ -225,3 +227,6 @@ function blockRobotMoving() {
 }
 
 init();
+
+
+export { init as startGame }
